@@ -1,0 +1,16 @@
+logs/*
+!.gitkeep
+node_modules/
+tmp
+.idea
+.DS_Store
+angular-phonecat-snapshots
+bower_components/
+.externalToolBuilders
+.settings
+.classpath
+.project
+.gradle
+build
+target
+/bin/

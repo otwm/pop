@@ -9,7 +9,7 @@ nodejs
 ## 초기 셋팅
 checkout 후에 다음 과정을 실행한다. 프로젝트 루트에서.. 	
 
-npm install	
+npm install		
 npm run update-webdriver(protractor 가동시 필요)		
 	
 이클립스 일 경우	

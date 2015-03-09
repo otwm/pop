@@ -10,11 +10,36 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
-	<context:component-scan base-package="hello" />
 
-	<mvc:resources mapping="/app/**" location="/app/build/" />
+	<context:component-scan base-package="www.pop.web" />
+
+	<mvc:resources mapping="/app/**" location="/app/" order="0"/>
+	<mvc:resources mapping="/upload/**" location="/upload/" order="0"/>
+	<mvc:resources mapping="/assets/**" location="/assets/" order="0"/>
 
 	<mvc:annotation-driven />
+
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/**">urlFilenameViewController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="urlFilenameViewController"
+		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

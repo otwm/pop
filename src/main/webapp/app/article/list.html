@@ -1,0 +1,88 @@
+<div class="container">
+	<div class="page-header">
+		<h2>게시판</h2>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<button class="btn btn-primary btn-xs glyphicon glyphicon-menu-down" style="vertical-align:text-bottom"></button> 검색
+			</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline" role="form" action="#">
+				<div class="form-group">
+					<label class="sr-only" for="kind">종류</label>
+					<select class="form-control" id="kind">
+						<option>제목+내용</option>
+						<option>제목</option>
+						<option>내용</option>
+						<option>글쓴이</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label class="sr-only" for="text">text</label> <input type="text"
+						class="form-control" id="text" placeholder="text">
+				</div>
+				<button type="submit" class="btn btn-default glyphicon glyphicon-search">검색</button>
+				<button type="button" class="btn btn-default glyphicon glyphicon-pencil">등록</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<button class="btn btn-primary btn-xs glyphicon glyphicon-menu-down" style="vertical-align:text-bottom"></button> 목록
+			</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-spriped table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-1 text-center">
+							순번
+						</th>
+						<th class="text-center">
+							제목
+						</th>
+						<th class="text-center">
+							등록자
+						</th>
+						<th class="text-center">
+							작성일
+						</th>
+						<th class="text-center">
+							수정일
+						</th>
+						<th class="text-center">
+							조회
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="article in articles">
+						<td>{{article.id}}</td>
+						<td>{{article.title}}</td>
+						<td>등록자</td>
+						<td>{{article.regDate}}</td>
+						<td>{{article.modDate}}</td>
+						<td>조회</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer text-right">
+			2 건
+		</div>
+	</div>
+	
+	<div class="center">
+		<ul class="pagination pagination-sm">
+			<li><a href="#" class="prev">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#" class="next">&raquo;</a></li>
+		</ul>
+	</div>
+</div>

@@ -1,31 +1,40 @@
 <div class="container">
 	<div class="page-header">
-		<h2>게시판</h2>
+		<h2>
+			<span class="glyphicon glyphicon-edit" />게시판<small>조회</small>
+		</h2>
 	</div>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">
-				<button class="btn btn-primary btn-xs glyphicon glyphicon-menu-down" style="vertical-align:text-bottom"></button> 검색
+				<button class="btn btn-primary btn-xs glyphicon glyphicon-menu-down"
+					style="vertical-align: text-bottom"></button>
+				검색
 			</h3>
 		</div>
 		<div class="panel-body">
-			<form class="form-inline" role="form" action="#">
+			<form class="form-inline" role="form" action="/article">
 				<div class="form-group">
-					<label class="sr-only" for="kind">종류</label>
-					<select class="form-control" id="kind">
-						<option>제목+내용</option>
-						<option>제목</option>
-						<option>내용</option>
-						<option>글쓴이</option>
+					<label class="sr-only" for="kind">종류</label> <select
+						class="form-control" id="kind" name="kind" ng-model="query.kind">
+						<option value="titleAndContent">제목+내용</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+						<option value="writer">글쓴이</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="text">text</label> <input type="text"
-						class="form-control" id="text" placeholder="text">
+						class="form-control" id="text" name="text" ng-model="query.text"
+						placeholder="text" />
 				</div>
-				<button type="submit" class="btn btn-default glyphicon glyphicon-search">검색</button>
-				<button type="button" class="btn btn-default glyphicon glyphicon-pencil">등록</button>
+				<button type="button"
+					class="btn btn-default glyphicon glyphicon-search"
+					ng-click="search()">검색</button>
+				<button type="button"
+					class="btn btn-default glyphicon glyphicon-pencil"
+					ng-click="go('/article/form')">등록</button>
 			</form>
 		</div>
 	</div>
@@ -33,50 +42,38 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">
-				<button class="btn btn-primary btn-xs glyphicon glyphicon-menu-down" style="vertical-align:text-bottom"></button> 목록
+				<button class="btn btn-primary btn-xs glyphicon glyphicon-menu-down"
+					style="vertical-align: text-bottom"></button>
+				목록
 			</h3>
 		</div>
 		<div class="panel-body">
 			<table class="table table-spriped table-hover">
 				<thead>
 					<tr>
-						<th class="col-md-1 text-center">
-							순번
-						</th>
-						<th class="text-center">
-							제목
-						</th>
-						<th class="text-center">
-							등록자
-						</th>
-						<th class="text-center">
-							작성일
-						</th>
-						<th class="text-center">
-							수정일
-						</th>
-						<th class="text-center">
-							조회
-						</th>
+						<th class="col-md-1 text-center">순번</th>
+						<th class="text-center">제목</th>
+						<th class="text-center">등록자</th>
+						<th class="text-center">작성일</th>
+						<th class="text-center">수정일</th>
+						<th class="text-center">조회</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="article in articles">
-						<td>{{article.id}}</td>
-						<td>{{article.title}}</td>
-						<td>등록자</td>
-						<td>{{article.regDate}}</td>
-						<td>{{article.modDate}}</td>
-						<td>조회</td>
+						<td><a href="#/article/{{article.id}}/form">{{article.id}}</a></td>
+						<td><a href="#/article/{{article.id}}/form">{{article.title}}</a></td>
+						<td><a href="#/article/{{article.id}}/form">등록자</a></td>
+						<td><a href="#/article/{{article.id}}/form">{{article.regDate}}</a></td>
+						<td><a href="#/article/{{article.id}}/form">{{article.modDate}}</a></td>
+						<td><a href="#/article/{{article.id}}/form">조회</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="panel-footer text-right">
-			2 건
-		</div>
+		<div class="panel-footer text-right">{{articles.length}} 건</div>
 	</div>
-	
+
 	<div class="center">
 		<ul class="pagination pagination-sm">
 			<li><a href="#" class="prev">&laquo;</a></li>

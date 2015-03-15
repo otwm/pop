@@ -18,6 +18,13 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.4.0'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.4.0'
+    compile 'org.apache.commons:commons-dbcp2:2.0.1'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
+    compile 'com.h2database:h2:1.4.179'
+    compile 'org.springframework:spring-orm:4.1.5.RELEASE'
     
+    testCompile 'junit:junit:4+'
+    testCompile 'org.springframework:spring-test:4.1.5.RELEASE'
+    testCompile 'org.mockito:mockito-all:1.8.4'
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
 }

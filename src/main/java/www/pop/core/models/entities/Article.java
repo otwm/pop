@@ -1,6 +1,10 @@
-package www.pop.article.domain;
+package www.pop.core.models.entities;
 
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * article
@@ -8,10 +12,13 @@ import java.util.Date;
  * @author kdo
  *
  */
+@Entity
 public class Article {
 	/**
 	 * id
 	 */
+	@Id
+	@GeneratedValue
 	private Long id;
 	/**
 	 * title

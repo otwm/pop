@@ -36,6 +36,9 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public Todo save(Todo todo) {
+		if(todo.getIsDone() == null){
+			todo.setIsDone(false);
+		}
 		return todoRepo.save(todo);
 	}
 

@@ -5,7 +5,7 @@
  */
 
 var phonecatApp = angular.module('popApp', [ 'ngRoute', 'homeControllers',
-		'aritcleControllers', 'articleServices' ]);
+		'aritcleControllers', 'articleServices','todoServices','TodoControllers' ]);
 
 phonecatApp.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
@@ -20,6 +20,9 @@ phonecatApp.config([ '$routeProvider', '$locationProvider',
 			}).when('/article/form', {
 				templateUrl : 'article/form.html',
 				controller : 'articleFormController'
+			}).when('/todo', {
+				templateUrl : 'todo/list.html',
+				controller : 'TodoListController'
 			}).otherwise({
 				redirectTo : '/app'
 			});

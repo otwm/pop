@@ -7,7 +7,7 @@ aritcleControllers.controller('articleListController', [ '$scope', '$location',
 		'articleService', function($scope, $location, articleService) {
 			$scope.query = {};
 			$scope.query.kind = 'titleAndContent';
-			$scope.search = function(a, b, c, d) {
+			$scope.search = function() {
 				articleService.query($scope.query, function(result) {
 					$scope.articles = result;
 				});

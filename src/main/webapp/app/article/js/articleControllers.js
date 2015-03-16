@@ -34,10 +34,12 @@ aritcleControllers.controller('articleFormController', [ '$scope',
 				if (article.id) {
 					articleService.update(article, function(result) {
 						alert('저장 되었습니다.');
+						$scope.go('/article');
 					});
 				} else {
 					articleService.save(article, function(result) {
 						alert('저장 되었습니다.');
+						$scope.go('/article');
 					});
 				}
 			};

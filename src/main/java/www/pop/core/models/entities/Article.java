@@ -5,6 +5,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 
 /**
  * article
@@ -36,6 +39,22 @@ public class Article {
 	 * modDate
 	 */
 	private Date modDate;
+
+	/**
+	 * 조회수
+	 */
+	private int hit;
+
+	/**
+	 * 생성자
+	 */
+	// @OneToOne(optional = true)
+	// private User regUser;
+	/**
+	 * 수정자
+	 */
+	// @OneToOne(optional = true)
+	// private User modUser;
 
 	/**
 	 * @return the id
@@ -110,6 +129,21 @@ public class Article {
 	 */
 	public void setModDate(Date modDate) {
 		this.modDate = modDate;
+	}
+
+	/**
+	 * @return the hit
+	 */
+	public int getHit() {
+		return hit;
+	}
+
+	/**
+	 * @param hit
+	 *            the hit to set
+	 */
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 
 }

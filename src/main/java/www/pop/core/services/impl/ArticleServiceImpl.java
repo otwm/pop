@@ -1,5 +1,6 @@
 package www.pop.core.services.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -31,11 +32,20 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public Article get(Long id) {
-		return articleRepo.get(id);
+		Article result = articleRepo.get(id);
+		result.setHit(result.getHit() + 1);
+		articleRepo.save(result);
+		return result;
 	}
 
 	@Override
 	public Article save(Article article) {
+		if (article.getId() == null) {
+			article.setRegDate(new Date());
+			article.setHit(1);
+		} else {
+			article.setModDate(new Date());
+		}
 		return articleRepo.save(article);
 	}
 

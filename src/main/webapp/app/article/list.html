@@ -52,21 +52,21 @@
 				<thead>
 					<tr>
 						<th class="col-md-1 text-center">순번</th>
-						<th class="text-center">제목</th>
-						<th class="text-center">등록자</th>
-						<th class="text-center">작성일</th>
-						<th class="text-center">수정일</th>
-						<th class="text-center">조회</th>
+						<th class="col-md-4 text-center">제목</th>
+						<th class="col-md-2 text-center">등록자</th>
+						<th class="col-md-2 text-center">작성일</th>
+						<th class="col-md-2 text-center">수정일</th>
+						<th class="col-md-1 text-center">조회</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="article in articles">
-						<td><a href="#/article/{{article.id}}/form">{{article.id}}</a></td>
-						<td><a href="#/article/{{article.id}}/form">{{article.title}}</a></td>
-						<td><a href="#/article/{{article.id}}/form">등록자</a></td>
-						<td><a href="#/article/{{article.id}}/form">{{article.regDate}}</a></td>
-						<td><a href="#/article/{{article.id}}/form">{{article.modDate}}</a></td>
-						<td><a href="#/article/{{article.id}}/form">조회</a></td>
+						<td class="col-md-1 text-center"><a href="#/article/{{article.id}}/form">{{article.id}}</a></td>
+						<td class="col-md-4 text-center"><a href="#/article/{{article.id}}/form">{{article.title}}</a></td>
+						<td class="col-md-2 text-center"><a href="#/article/{{article.id}}/form">등록자</a></td>
+						<td class="col-md-2 text-center"><a href="#/article/{{article.id}}/form">{{article.regDate | date:'yyyy-MM-dd'}}</a></td>
+						<td class="col-md-2 text-center"><a href="#/article/{{article.id}}/form">{{article.modDate | date:'yyyy-MM-dd'}}</a></td>
+						<td class="col-md-1 text-center"><a href="#/article/{{article.id}}/form">{{article.hit}}</a></td>
 					</tr>
 				</tbody>
 			</table>

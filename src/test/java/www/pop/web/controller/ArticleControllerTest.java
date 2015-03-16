@@ -25,9 +25,9 @@ public class ArticleControllerTest {
 
 	@Before
 	public void setup() {
-		MockitoAnnotations.initMocks(this);
-		mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-		articleCaptor = ArgumentCaptor.forClass(Article.class);
+//		MockitoAnnotations.initMocks(this);
+//		mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+//		articleCaptor = ArgumentCaptor.forClass(Article.class);
 	}
 	
 	@Test

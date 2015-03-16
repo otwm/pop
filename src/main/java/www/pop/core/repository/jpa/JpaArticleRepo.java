@@ -31,7 +31,11 @@ public class JpaArticleRepo implements ArticleRepo {
 
 	@Override
 	public Article save(Article article) {
-		entityManager.merge(article);
+		if (article.getId() == null) {
+			entityManager.persist(article);
+		}else{
+			entityManager.merge(article);
+		}
 		return article;
 	}
 

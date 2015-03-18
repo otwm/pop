@@ -2,6 +2,9 @@
   "name": "pop",
   "private": true,
   "version": "0.1.0",
+  "engines": {
+    "node": "0.10.x"
+  },
   "description": "pop",
   "repository": "nothing",
   "license": "MIT",

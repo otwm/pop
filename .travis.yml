@@ -5,4 +5,4 @@ install: gradle deploy
 deploy:
   provider: heroku
   api_key: "b13e415c-bed0-4ba4-92cd-7cc0c6c41c99"
-  app: pop
+  app:evening-reef-2171.herokuapp.com

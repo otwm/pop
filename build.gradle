@@ -33,3 +33,8 @@ task deploy(dependsOn: build)<<{
 	println '======================= start deploy ======================='
 	println '======================= end deploy ======================='
 }
+
+task stage(dependsOn: ['clean', 'deploy'])<<{
+	println '======================= start stage ======================='
+	println '======================= end stage ======================='
+}

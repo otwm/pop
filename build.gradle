@@ -69,7 +69,7 @@ task bowerInstall(type:Exec){
 }
 */
 
-war.dependsOn bowerInstall
+//war.dependsOn bowerInstall
 
 task deploy(dependsOn: build)<<{
 	println '======================= start deploy ======================='

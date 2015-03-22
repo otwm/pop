@@ -36,6 +36,7 @@ dependencies {
     runtimeOnly 'com.newrelic.agent.java:newrelic-agent:2.18.0'
 }
 
+/*
 task npmBin << {
     new ByteArrayOutputStream().withStream { os ->
         def result = exec {
@@ -62,7 +63,7 @@ task npm(type: Exec) {
 task bowerInstall(dependsOn: 'npm', type: Exec){
     commandLine "${npmBin.binPath}bower", 'install'
 }
-
+*/
 /*
 task bowerInstall(type:Exec){
 	commandLine './node_modules/bower/bin/bower', 'install'

@@ -36,6 +36,13 @@ dependencies {
     runtimeOnly 'com.newrelic.agent.java:newrelic-agent:2.18.0'
 }
 
+task bowerInstall(type:Exec){
+	commandLine './node_modules/bower/bin/bower', 'install'
+}
+
+task war(dependsOn:bowerInstall){
+}
+
 task deploy(dependsOn: build)<<{
 	println '======================= start deploy ======================='
 	println '======================= end deploy ======================='

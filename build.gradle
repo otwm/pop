@@ -59,7 +59,7 @@ task npm(type: Exec) {
 }
  
 // Install the bower components for front-end library management
-task bower(dependsOn: 'npm', type: Exec){
+task bowerInstall(dependsOn: 'npm', type: Exec){
     commandLine "${npmBin.binPath}bower", 'install'
 }
 
@@ -69,7 +69,7 @@ task bowerInstall(type:Exec){
 }
 */
 
-war.dependsOn bower
+war.dependsOn bowerInstall
 
 task deploy(dependsOn: build)<<{
 	println '======================= start deploy ======================='

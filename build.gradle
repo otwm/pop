@@ -11,6 +11,10 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+	runtimeOnly
+}
+
 dependencies {
     compile 'org.springframework:spring-context:4.1.5.RELEASE'
     compile 'org.springframework:spring-webmvc:4.1.5.RELEASE'
@@ -28,8 +32,8 @@ dependencies {
     testCompile 'org.mockito:mockito-all:1.8.4'
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
 
-    runtime 'org.mortbay.jetty:jetty-runner:8.1.1.v20120215'
-    runtime 'com.newrelic.agent.java:newrelic-agent:2.18.0'
+    runtimeOnly 'org.mortbay.jetty:jetty-runner:8.1.1.v20120215'
+    runtimeOnly 'com.newrelic.agent.java:newrelic-agent:2.18.0'
 }
 
 task deploy(dependsOn: build)<<{

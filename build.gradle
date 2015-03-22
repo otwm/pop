@@ -36,11 +36,40 @@ dependencies {
     runtimeOnly 'com.newrelic.agent.java:newrelic-agent:2.18.0'
 }
 
+task npmBin << {
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+            executable = 'npm'
+            args = ['bin']
+            standardOutput = os
+        }
+        ext.binPath = os.toString().trim() + "/"
+    }
+}
+ 
+// Install packages from package.json
+task npm(type: Exec) {
+    description = "Grab NodeJS dependencies (from package.json)"
+    commandLine = ["npm", "install"]
+    inputs.file "package.json"
+    outputs.dir "node_modules"
+ 
+    tasks.npmBin.execute()
+ 
+}
+ 
+// Install the bower components for front-end library management
+task bower(dependsOn: 'npm', type: Exec){
+    commandLine "${npmBin.binPath}bower", 'install'
+}
+
+/*
 task bowerInstall(type:Exec){
 	commandLine './node_modules/bower/bin/bower', 'install'
 }
+*/
 
-war.dependsOn bowerInstall
+war.dependsOn bower
 
 task deploy(dependsOn: build)<<{
 	println '======================= start deploy ======================='

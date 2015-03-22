@@ -40,8 +40,7 @@ task bowerInstall(type:Exec){
 	commandLine './node_modules/bower/bin/bower', 'install'
 }
 
-task war(dependsOn:bowerInstall){
-}
+war.dependsOn bowerInstall
 
 task deploy(dependsOn: build)<<{
 	println '======================= start deploy ======================='

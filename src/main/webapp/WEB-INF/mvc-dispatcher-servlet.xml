@@ -17,6 +17,7 @@
 	<mvc:resources mapping="/upload/**" location="/upload/" order="0"/>
 	<mvc:resources mapping="/assets/**" location="/assets/" order="0"/>
 
+	<mvc:view-controller path="/" view-name="/app/index.html"/>
 	<mvc:annotation-driven />
 
 	<bean id="handlerMapping"

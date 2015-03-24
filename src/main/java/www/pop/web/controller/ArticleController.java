@@ -19,7 +19,7 @@ import www.pop.core.services.ArticleService;
 @RequestMapping("/article")
 public class ArticleController {
 
-	@Autowired(required=false)
+	@Autowired
 	private ArticleService articleService;
 
 	/**

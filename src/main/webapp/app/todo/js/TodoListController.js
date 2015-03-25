@@ -4,7 +4,7 @@
 var todoControllers = angular.module('TodoControllers', []);
 
 todoControllers = todoControllers.controller('TodoListController', [ '$scope', '$location',
-		'todoService', function($scope, $location, todoService) {
+		'todoService','$timeout', function($scope, $location, todoService,$timeout) {
 			$scope.todos = todoService.query();
 			$scope.addTodo = function(){
 				$scope.todos.push({});
@@ -38,30 +38,25 @@ todoControllers = todoControllers.controller('TodoListController', [ '$scope', '
 			};
 			
 			$scope.message = '';
-			$scope.ws;
-			$scope.echoMessages = [];
+			$scope.sock;
 
 			$scope.init = function() {
-				$scope.ws = new WebSocket('ws://localhost:8080/echo');
-				$scope.ws.onopen = function() {
-					console.log('websocket opened');
-				};
-				$scope.ws.onmessage = function(message) {
-					console.log(message);
-					console.log('receive message : ' + message.data);
-					$scope.echoMessages.unshift(message.data);
-					$timeout(function() {
-						$scope.$apply('echoMessages');
-					})
-				};
-				$scope.ws.onclose = function(event) {
-					console.log(event);
-					console.log('websocket closed');
-				};
+			  $scope.sock = new SockJS('http://localhost:8080/echojs');
+			  $scope.sock.onopen = function() {
+			    console.log('websocket opened');
+			  };
+			  $scope.sock.onmessage = function(message) {
+			    console.log(message);
+			    console.log('receive message : ' + message.data);
+			  };
+			  $scope.sock.onclose = function(event) {
+			    console.log(event);
+			    console.log('websocket closed');
+			  };
 			};
 
 			$scope.send = function() {
-				$scope.ws.send($scope.message);
+			  $scope.sock.send($scope.message);
 			};
 
 			$scope.init();

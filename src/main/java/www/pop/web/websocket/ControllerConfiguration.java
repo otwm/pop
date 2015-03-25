@@ -19,5 +19,6 @@ public class ControllerConfiguration extends WebMvcConfigurerAdapter implements
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		registry.addHandler(echoHandler, "/echo");
+		registry.addHandler(echoHandler, "/echojs").withSockJS();
 	}
 }

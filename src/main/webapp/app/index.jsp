@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/view/include.jsp"%>
+<%@include file="./inculde.jsp"%>
 <!DOCTYPE html> 
 <html lang="ko" ng-app="popApp">
 <head>
-<base href="${context}">
+<base href="/pop">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@ body {
 <script src="${context}/app/bower_components/angular-resource/angular-resource.js"></script>
 
 <!-- pop app -->
-<script src="${context}/js/popApp.js"></script>
+<script src="${context}/app/js/popApp.js"></script>
 <!-- controller -->
 <script src="${context}/app/js/homeController.js"></script>
 <script src="${context}/app/article/js/articleControllers.js"></script>
@@ -70,7 +70,7 @@ body {
 					<li class="active"><a href="#/">home <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav">
-					<li><a href="#/article">게시판<span class="sr-only">(current)</span></a></li>
+					<li><a href="#/article">ê²ìí <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav">
 					<li><a href="#/todo">Todo <span class="sr-only">(current)</span></a></li>

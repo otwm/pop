@@ -4,7 +4,7 @@
 var todoControllers = angular.module('TodoControllers', []);
 
 todoControllers = todoControllers.controller('TodoListController', [ '$scope', '$location',
-		'todoService', function($scope, $location, todoService) {
+		'todoService','$timeout', function($scope, $location, todoService,$timeout) {
 			$scope.todos = todoService.query();
 			$scope.addTodo = function(){
 				$scope.todos.push({});

@@ -15,12 +15,38 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import www.pop.core.models.entities.Article;
 import www.pop.core.services.ArticleService;
 
+/**
+ * 게시물 콘트롤러
+ * 
+ * @author kdo
+ *
+ */
 @Controller
 @RequestMapping("/article")
 public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
+
+	/**
+	 * 리스트 뷰
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String listView() {
+		return "/article/list";
+	}
+
+	/**
+	 * 폼 뷰
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "form", method = RequestMethod.GET)
+	public String form() {
+		return "/article/form";
+	}
 
 	/**
 	 * 리스트

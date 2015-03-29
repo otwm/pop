@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="/WEB-INF/view/include.jsp"%>
 <!DOCTYPE html> 
 <html lang="ko" ng-app="popApp">
@@ -13,9 +14,9 @@
 
 <!-- bootstrap css-->
 <link rel="stylesheet"
-	href="${context}/app/bower_components/bootstrap/dist/css/bootstrap.css">
+	href="${context}/assets/bower_components/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet"
-	href="${context}/app/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+	href="${context}/assets/bower_components/bootstrap/dist/css/bootstrap-theme.css">
 
 <style type="text/css">
 body {
@@ -28,26 +29,29 @@ body {
 }
 </style>
 
+<script type="text/javascript">
+var contextRoot = "${context}";
+</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="${context}/app/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="${context}/assets/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="${context}/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="${context}/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- angularjs -->
-<script src="${context}/app/bower_components/angular/angular.js"></script>
-<script src="${context}/app/bower_components/angular-animate/angular-animate.js"></script>
-<script src="${context}/app/bower_components/angular-route/angular-route.js"></script>
-<script src="${context}/app/bower_components/angular-resource/angular-resource.js"></script>
+<script src="${context}/assets/bower_components/angular/angular.js"></script>
+<script src="${context}/assets/bower_components/angular-animate/angular-animate.js"></script>
+<script src="${context}/assets/bower_components/angular-route/angular-route.js"></script>
+<script src="${context}/assets/bower_components/angular-resource/angular-resource.js"></script>
 
 <!-- pop app -->
-<script src="${context}/js/popApp.js"></script>
+<script src="${context}/resources/js/popApp.js"></script>
 <!-- controller -->
-<script src="${context}/app/js/homeController.js"></script>
-<script src="${context}/app/article/js/articleControllers.js"></script>
-<script src="${context}/app/todo/js/TodoListController.js"></script>
+<script src="${context}/resources/js/homeController.js"></script>
+<script src="${context}/resources/js/article/articleControllers.js"></script>
+<script src="${context}/resources/js/todo/TodoListController.js"></script>
 <!-- service -->
-<script src="${context}/app/article/js/articleService.js"></script>
-<script src="${context}/app/todo/js/TodoService.js"></script>
+<script src="${context}/resources/js/article/articleService.js"></script>
+<script src="${context}/resources/js/todo/TodoService.js"></script>
 
 
 </head>

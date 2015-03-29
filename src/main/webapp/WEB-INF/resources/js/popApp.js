@@ -4,26 +4,28 @@
  * App Module
  */
 
-var phonecatApp = angular.module('popApp', [ 'ngRoute', 'homeControllers',
+var popApp = angular.module('popApp', [ 'ngRoute', 'homeControllers',
 		'aritcleControllers', 'articleServices','todoServices','TodoControllers' ]);
 
-phonecatApp.config([ '$routeProvider', '$locationProvider',
+popApp.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
+	
 			$routeProvider.when('/article', {
-				templateUrl : 'article/list.html',
+				templateUrl : contextRoot + '/article/list',
 				controller : 'articleListController'
-			}).when('/app', {
-				templateUrl : 'content.html'
+			}).when('/', {
+				templateUrl : contextRoot + '/content'
 			}).when('/article/:id/form', {
-				templateUrl : 'article/form.html',
+				templateUrl : contextRoot + '/article/form',
 				controller : 'articleFormController'
 			}).when('/article/form', {
-				templateUrl : 'article/form.html',
+				templateUrl : contextRoot + '/article/form',
 				controller : 'articleFormController'
 			}).when('/todo', {
-				templateUrl : 'todo/list.html',
+				templateUrl : contextRoot + '/todo/list',
 				controller : 'TodoListController'
 			}).otherwise({
-				redirectTo : '/app'
+				redirectTo : '/'
 			});
+			
 		} ]);

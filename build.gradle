@@ -19,12 +19,10 @@ configurations {
 
 dependencies {
 	//servlet
-    //providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
-    compile 'javax.servlet:javax.servlet-api:3.0.1'
+    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
 	
 	//jstl
 	compile 'jstl:jstl:1.2'
-	
 	
 	//srping 기본
     compile 'org.springframework:spring-context:4.1.5.RELEASE'
@@ -52,14 +50,10 @@ dependencies {
     compile "org.springframework:spring-websocket:4.1.5.RELEASE"
     
     compile "org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatVersion}"
+    compile "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     compile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
     compile "org.apache.tomcat.embed:tomcat-embed-el:${tomcatVersion}"
-    compile "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
 
-    /*
-    compile "org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatVersion}"
-    compile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
-    */
     //test unit
     testCompile 'junit:junit:4+'
     testCompile 'org.springframework:spring-test:4.1.5.RELEASE'

@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="container">
 	<div class="page-header">
 		<h2>
-			<span class="glyphicon glyphicon-edit" />Todo<small>조회</small>
+			<span class="glyphicon glyphicon-edit" />게시판<small>조회</small>
 		</h2>
 	</div>
 
@@ -34,7 +36,7 @@
 					ng-click="search()">검색</button>
 				<button type="button"
 					class="btn btn-default glyphicon glyphicon-pencil"
-					ng-click="addTodo()">등록</button>
+					ng-click="go('/article/form')">등록</button>
 			</form>
 		</div>
 	</div>
@@ -51,24 +53,27 @@
 			<table class="table table-spriped table-hover">
 				<thead>
 					<tr>
-						<th class="col-md-1 text-center"></th>
-						<th class="col-md-8 text-center">내용</th>
-						<th class="text-center">삭제</th>
+						<th class="col-md-1 text-center">순번</th>
+						<th class="col-md-4 text-center">제목</th>
+						<th class="col-md-2 text-center">등록자</th>
+						<th class="col-md-2 text-center">작성일</th>
+						<th class="col-md-2 text-center">수정일</th>
+						<th class="col-md-1 text-center">조회</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="todo in todos">
-						<td><input type="checkbox" class="form-control" name="isDone" ng-model="todo.isDone" value="true"/></td>
-						<td><input type="text" class="form-control" name="content" ng-model="todo.content"/> </td>
-						<td>
-							<button type="button" class="btn btn-primary" ng-click="save(todo)">저장</button>
-							<button type="button" class="btn btn-danger" ng-click="delete(todo)">삭제</button>
-						</td>
+					<tr ng-repeat="article in articles">
+						<td class="col-md-1 text-center"><a href="#/article/{{article.id}}/form">{{article.id}}</a></td>
+						<td class="col-md-4 text-center"><a href="#/article/{{article.id}}/form">{{article.title}}</a></td>
+						<td class="col-md-2 text-center"><a href="#/article/{{article.id}}/form">등록자</a></td>
+						<td class="col-md-2 text-center"><a href="#/article/{{article.id}}/form">{{article.regDate | date:'yyyy-MM-dd'}}</a></td>
+						<td class="col-md-2 text-center"><a href="#/article/{{article.id}}/form">{{article.modDate | date:'yyyy-MM-dd'}}</a></td>
+						<td class="col-md-1 text-center"><a href="#/article/{{article.id}}/form">{{article.hit}}</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="panel-footer text-right">총{{todos.length}} 건 &nbsp; 남은 건{{todoRemaining()}}건</div>
+		<div class="panel-footer text-right">{{articles.length}} 건</div>
 	</div>
 
 	<div class="center">
@@ -79,13 +84,4 @@
 			<li><a href="#" class="next">&raquo;</a></li>
 		</ul>
 	</div>
-	
-	<h3>WebSocket Test Page</h3>
-
-<input type="text" ng-model="message"/>
-<button ng-click="send()">SEND</button>
-
-<ul ng-repeat="echo in echoMessages">
-  <li>{{echo}}</li>
-</ul>
-</div>
+</div>	

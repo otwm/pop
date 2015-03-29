@@ -21,6 +21,16 @@ public class TodoController {
 
 	@Autowired(required = false)
 	private TodoService todoService;
+	
+	/**
+	 * 리스트 뷰
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String listView() {
+		return "/todo/list";
+	}
 
 	/**
 	 * 리스트

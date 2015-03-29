@@ -5,7 +5,7 @@
 var todoServices = angular.module('todoServices', [ 'ngResource' ]);
 
 todoServices.factory('todoService', [ '$resource', function($resource) {
-	return $resource('/todo/:id', {
+	return $resource(contextRoot + '/todo/:id', {
 		id : '@id'
 	}, {
 		update : {

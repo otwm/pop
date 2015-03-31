@@ -3,7 +3,6 @@ logs/*
 .idea
 .DS_Store
 angular-phonecat-snapshots
-node_modules/
 bower_components/
 .externalToolBuilders
 .settings

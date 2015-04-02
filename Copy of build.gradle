@@ -1,0 +1,125 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+version = '1.0'
+
+def tomcatVersion='7.0.52'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+	runtimeOnly
+}
+
+dependencies {
+	//servlet
+    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+	
+	//jstl
+	compile 'jstl:jstl:1.2'
+	
+	//srping 기본
+    compile 'org.springframework:spring-context:4.1.5.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.5.RELEASE'
+    
+    //jackson json util
+    compile 'com.fasterxml.jackson.core:jackson-core:2.4.0'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.0'
+    
+    //dbcp
+    compile 'org.apache.commons:commons-dbcp2:2.0.1'
+    
+    //hibernate
+    compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
+    
+    //h2 database
+    compile 'com.h2database:h2:1.4.179'
+    
+    //spring orm
+    compile 'org.springframework:spring-orm:4.1.5.RELEASE'
+    
+    //spring websocket and messaging 
+    compile "org.springframework:spring-messaging:4.1.5.RELEASE"
+    compile "org.springframework:spring-websocket:4.1.5.RELEASE"
+    
+    compile "org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatVersion}"
+    compile "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    compile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
+    compile "org.apache.tomcat.embed:tomcat-embed-el:${tomcatVersion}"
+
+    //test unit
+    testCompile 'junit:junit:4+'
+    testCompile 'org.springframework:spring-test:4.1.5.RELEASE'
+    testCompile 'org.mockito:mockito-all:1.8.4'
+    
+	//jetty for heroku
+    runtimeOnly 'org.mortbay.jetty:jetty-runner:8.1.1.v20120215'
+    runtimeOnly 'com.newrelic.agent.java:newrelic-agent:2.18.0'
+}
+
+/*
+task npmBin << {
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+            executable = 'npm'
+            args = ['bin']
+            standardOutput = os
+        }
+        ext.binPath = os.toString().trim() + "/"
+    }
+}
+ 
+// Install packages from package.json
+task npm(type: Exec) {
+    description = "Grab NodeJS dependencies (from package.json)"
+    commandLine = ["npm", "install"]
+    inputs.file "package.json"
+    outputs.dir "node_modules"
+ 
+    tasks.npmBin.execute()
+ 
+}
+ 
+// Install the bower components for front-end library management
+task bowerInstall(dependsOn: 'npm', type: Exec){
+    commandLine "${npmBin.binPath}bower", 'install'
+}
+*/
+/*
+task bowerInstall(type:Exec){
+	commandLine './node_modules/bower/bin/bower', 'install'
+}
+*/
+
+//war.dependsOn bowerInstall
+
+task deploy(dependsOn: build)<<{
+	println '======================= start deploy ======================='
+	println '======================= end deploy ======================='
+}
+
+task stage(dependsOn: ['clean', 'deploy', 'copyToLib'])<<{
+	println '======================= start stage ======================='
+	println '======================= end stage ======================='
+}
+
+task copyToLib << {
+	println '======================= start copyToLib ======================='
+	copy {
+	from configurations.runtimeOnly.copy().setTransitive(false)
+	into "$buildDir/libs"
+	rename { name ->
+		def artifacts = configurations.runtimeOnly.resolvedConfiguration.resolvedArtifacts
+		def artifact = artifacts.find { it.file.name == name }
+		"${artifact.name}.${artifact.extension}"
+	}
+	}
+	println '======================= end copyToLib ======================='
+}

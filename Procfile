@@ -1,1 +1,2 @@
-web: java $JAVA_OPTS -jar build/libs/jetty-runner.jar --port $PORT build/libs/*.war
+default_process_types:
+  web: java -jar -Dport=$PORT build/libs/pop.jar

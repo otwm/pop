@@ -1,6 +1,28 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
+    }
+    dependencies {
+        classpath "com.wiredforcode:gradle-heroku-plugin:1.0.0"
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
+apply plugin: 'heroku'
+
+heroku {
+    //get this from heroku
+    apiKey = 'b13e415c-bed0-4ba4-92cd-7cc0c6c41c99'
+
+    //set this on first run if you don't want a generated name
+    appName = 'kdo-pop'
+
+    //set this if you are not happy with the default gradlew buildpack
+    buildpack = 'https://github.com/krro/heroku-buildpack-gradle.git'
+}
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7

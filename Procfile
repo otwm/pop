@@ -1,2 +1,2 @@
 default_process_types:
-  web: java -jar -Dport=$PORT build/libs/pop.jar
+  web: gradle startTomcat -Pport=$PORT

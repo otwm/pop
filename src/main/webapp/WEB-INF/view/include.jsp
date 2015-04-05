@@ -2,3 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
+<c:if test="${context eq '/' }">
+	<c:set var="context" value=""/>
+</c:if>

@@ -17,6 +17,13 @@ configurations {
 	runtimeOnly
 }
 
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'pop',
+				   'Implementation-Version': version
+	}
+}
+
 dependencies {
 	//servlet
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
@@ -53,7 +60,8 @@ dependencies {
     compile "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     compile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
     compile "org.apache.tomcat.embed:tomcat-embed-el:${tomcatVersion}"
-
+	compile "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+	
     //test unit
     testCompile 'junit:junit:4+'
     testCompile 'org.springframework:spring-test:4.1.5.RELEASE'
@@ -64,6 +72,27 @@ dependencies {
     runtimeOnly 'com.newrelic.agent.java:newrelic-agent:2.18.0'
 }
 
+task(startTomcat, dependsOn: 'classes', type: JavaExec) {
+	main = 'util.TomcatLauncher'
+	classpath = sourceSets.main.runtimeClasspath
+	
+	if (project.hasProperty('port')) {
+		println '===================================='
+		println 'start port : ' + port
+		println '===================================='
+		args '-Dport=' + port
+	}
+	
+	//args '-Dport=1015'
+	//args=['-Dport=9090'].toList();
+}
+
+task(jv, type: JavaExec) {
+	main = 'util.TomcatLauncher'
+	classpath = sourceSets.main.runtimeClasspath
+	args '--verbose'
+	//args=['-Dport=9090'].toList();
+}
 /*
 task npmBin << {
     new ByteArrayOutputStream().withStream { os ->

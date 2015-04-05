@@ -132,11 +132,17 @@ task deploy(dependsOn: build)<<{
 	println '======================= end deploy ======================='
 }
 
-task stage(dependsOn: ['clean', 'deploy', 'copyToLib'])<<{
+task stage(dependsOn: ['appInstall'])<<{
 	println '======================= start stage ======================='
 	println '======================= end stage ======================='
 }
 
+/*
+task stage(dependsOn: ['clean', 'deploy', 'copyToLib'])<<{
+	println '======================= start stage ======================='
+	println '======================= end stage ======================='
+}
+*/
 task copyToLib << {
 	println '======================= start copyToLib ======================='
 	copy {

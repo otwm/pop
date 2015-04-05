@@ -8,10 +8,28 @@ import javax.servlet.ServletException;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
+/**
+ * heroku build용 톰캣 런처
+ * 
+ * @author kdo
+ *
+ */
 public class TomcatLauncher {
+	/**
+	 * heroku path
+	 */
 	private static String webAppDir = "/app/src/main/webapp";
-//	private static String webAppDir = "C:/Users/kdo/git/pop/src/main/webapp";
-	
+
+	// private static String webAppDir = "C:/Users/kdo/git/pop/src/main/webapp";
+
+	/**
+	 * tomcat start
+	 * 
+	 * @param args 
+	 * @throws IOException
+	 * @throws LifecycleException
+	 * @throws ServletException
+	 */
 	public static void main(final String[] args) throws IOException,
 			LifecycleException, ServletException {
 		Tomcat tomcat = new Tomcat();
@@ -23,6 +41,11 @@ public class TomcatLauncher {
 		tomcat.getServer().await();
 	}
 
+	/**
+	 * port 설정
+	 * @param args
+	 * @return
+	 */
 	private static int getPort(String[] args) {
 		if (args.length > 0) {
 			for (String arg : args) {

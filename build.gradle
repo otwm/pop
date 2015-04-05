@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin:'application'
 apply plugin: 'eclipse-wtp'
 
 sourceCompatibility = 1.7
@@ -8,6 +9,8 @@ targetCompatibility = 1.7
 version = '1.0'
 
 def tomcatVersion='7.0.52'
+
+mainClassName = "util.TomcatLauncher"
 
 repositories {
     mavenCentral()
@@ -87,12 +90,7 @@ task(startTomcat, dependsOn: 'classes', type: JavaExec) {
 	//args=['-Dport=9090'].toList();
 }
 
-task(jv, type: JavaExec) {
-	main = 'util.TomcatLauncher'
-	classpath = sourceSets.main.runtimeClasspath
-	args '--verbose'
-	//args=['-Dport=9090'].toList();
-}
+task appInstall(dependsOn: ['clean', 'installApp'])
 /*
 task npmBin << {
     new ByteArrayOutputStream().withStream { os ->

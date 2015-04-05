@@ -9,7 +9,7 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
 public class TomcatLauncher {
-	private static String webAppDir = "src/main/webapp";
+	private static String webAppDir = "../../../../src/main/webapp";
 
 	public static void main(final String[] args) throws IOException,
 			LifecycleException, ServletException {
@@ -33,6 +33,6 @@ public class TomcatLauncher {
 		if (System.getenv("PORT") != null) {
 			return Integer.parseInt(System.getenv("PORT"));
 		}
-		return 8080;
+		return 80;
 	}
 }

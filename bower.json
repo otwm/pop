@@ -13,6 +13,8 @@
     "angular-route": "1.4.x",
     "angular-resource": "1.4.x",
     "angular-animate": "1.4.x",
-    "sockjs" : "^0.3"
+    "sockjs" : "^0.3",
+    "stomp-websocket":"2.3.4",
+    "lodash":"latest"
   }
 }

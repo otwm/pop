@@ -37,11 +37,20 @@ var contextRoot = "${context}";
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="${context}/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+<!-- lodash -->
+<script src="${context}/assets/bower_components/lodash/lodash.js"></script>
+
 <!-- angularjs -->
 <script src="${context}/assets/bower_components/angular/angular.js"></script>
 <script src="${context}/assets/bower_components/angular-animate/angular-animate.js"></script>
 <script src="${context}/assets/bower_components/angular-route/angular-route.js"></script>
 <script src="${context}/assets/bower_components/angular-resource/angular-resource.js"></script>
+
+<!-- sock js -->
+<script src="${context}/assets/bower_components/sockjs/sockjs.js"></script>
+
+<!-- stomp websocket -->
+<script src="${context}/assets/bower_components/stomp-websocket/lib/stomp.js"></script>
 
 <!-- pop app -->
 <script src="${context}/resources/js/popApp.js"></script>
@@ -52,7 +61,6 @@ var contextRoot = "${context}";
 <!-- service -->
 <script src="${context}/resources/js/article/articleService.js"></script>
 <script src="${context}/resources/js/todo/TodoService.js"></script>
-
 
 </head>
 <body>

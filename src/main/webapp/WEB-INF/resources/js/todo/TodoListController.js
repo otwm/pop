@@ -37,27 +37,31 @@ todoControllers = todoControllers.controller('TodoListController', [ '$scope', '
 				return count;
 			};
 			
+			$scope.client;
+			$scope.name = '';
 			$scope.message = '';
-			$scope.sock;
-
+			
 			$scope.init = function() {
-			  $scope.sock = new SockJS('http://localhost:8080/echojs');
-			  $scope.sock.onopen = function() {
-			    console.log('websocket opened');
-			  };
-			  $scope.sock.onmessage = function(message) {
-			    console.log(message);
-			    console.log('receive message : ' + message.data);
-			  };
-			  $scope.sock.onclose = function(event) {
-			    console.log(event);
-			    console.log('websocket closed');
-			  };
+				var socket = new SockJS(contextRoot + '/endpoint');
+				$scope.client = Stomp.over(socket);
+				$scope.client.connect({}, function(frame) {
+					console.log('connected stomp over sockjs');
+					// subscribe message
+					$scope.client.subscribe('/subscribe/echo', function(message) {
+						console.log('receive subscribe');
+						console.log(message);
+					});
+				});
 			};
 
+			// send message
 			$scope.send = function() {
-			  $scope.sock.send($scope.message);
+				var data = {
+					name: $scope.name,
+					message: $scope.message
+				};
+				$scope.client.send(contextRoot + '/app/echo', {}, JSON.stringify(data));
 			};
-
+			
 			$scope.init();
 		}]);

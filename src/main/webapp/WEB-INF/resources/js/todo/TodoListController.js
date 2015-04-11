@@ -47,7 +47,12 @@ todoControllers = todoControllers.controller('TodoListController', [ '$scope', '
 				$scope.client.connect({}, function(frame) {
 					console.log('connected stomp over sockjs');
 					// subscribe message
-					$scope.client.subscribe('/subscribe/echo', function(message) {
+					$scope.client.subscribe(contextRoot +'/subscribe/echo', function(message) {
+						console.log('receive subscribe');
+						console.log(message);
+					});
+					
+					$scope.client.subscribe(contextRoot +'/subscribe/test', function(message) {
 						console.log('receive subscribe');
 						console.log(message);
 					});
@@ -61,6 +66,7 @@ todoControllers = todoControllers.controller('TodoListController', [ '$scope', '
 					message: $scope.message
 				};
 				$scope.client.send(contextRoot + '/app/echo', {}, JSON.stringify(data));
+				$scope.client.send(contextRoot + '/app/test', {}, JSON.stringify(data));
 			};
 			
 			$scope.init();

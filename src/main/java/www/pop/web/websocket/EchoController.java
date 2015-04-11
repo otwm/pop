@@ -12,4 +12,11 @@ public class EchoController {
 		System.out.println("receive message : " + "");
 		return "111111111111111";
 	}
+	
+	@MessageMapping("/test")
+	@SendTo("/subscribe/test")
+	public String sendTest(String test) throws Exception {
+		System.out.println("receive message : " + test);
+		return "test : " + test;
+	}
 }

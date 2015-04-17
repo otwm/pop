@@ -5,11 +5,12 @@
  */
 
 var popApp = angular.module('popApp', [ 'ngRoute', 'homeControllers',
-		'aritcleControllers', 'articleServices','todoServices','TodoControllers' ]);
+		'aritcleControllers', 'articleServices', 'todoServices',
+		'TodoControllers', 'MessageControllers', 'MessageServices' ]);
 
 popApp.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
-	
+
 			$routeProvider.when('/article', {
 				templateUrl : contextRoot + '/article/list',
 				controller : 'articleListController'
@@ -24,8 +25,11 @@ popApp.config([ '$routeProvider', '$locationProvider',
 			}).when('/todo', {
 				templateUrl : contextRoot + '/todo/list',
 				controller : 'TodoListController'
+			}).when('/message', {
+				templateUrl : contextRoot + '/message/home',
+				controller : 'MessageController'
 			}).otherwise({
 				redirectTo : '/'
 			});
-			
+
 		} ]);

@@ -58,9 +58,11 @@ var contextRoot = "${context}";
 <script src="${context}/resources/js/homeController.js"></script>
 <script src="${context}/resources/js/article/articleControllers.js"></script>
 <script src="${context}/resources/js/todo/TodoListController.js"></script>
+<script src="${context}/resources/js/message/MessageController.js"></script>
 <!-- service -->
 <script src="${context}/resources/js/article/articleService.js"></script>
 <script src="${context}/resources/js/todo/TodoService.js"></script>
+<script src="${context}/resources/js/message/MessageService.js"></script>
 
 </head>
 <body>
@@ -86,6 +88,9 @@ var contextRoot = "${context}";
 				</ul>
 				<ul class="nav navbar-nav">
 					<li><a href="#/todo">Todo <span class="sr-only">(current)</span></a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="#/message">Message <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
